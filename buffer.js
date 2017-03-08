@@ -43,3 +43,34 @@ var buffer3 = Buffer.concat([buffer1, buffer2]);
 console.log("buffer1 content: " + buffer1.toString());
 console.log("buffer2 content: " + buffer2.toString());
 console.log("concatenated buffer3 content: " + buffer3.toString());
+
+// comparing buffers
+var b1 = new Buffer('xyz');
+var b2 = new Buffer('xyzt');
+var b3 = new Buffer('xyz');
+var b4 = new Buffer('yzt');
+var buffersArray = [b2, b3, b4];
+for (i = 0; i < buffersArray.length; i++) {
+  var result = b1.compare(buffersArray[i]);
+  if (result < 0) {
+    console.log(b1 +" comes before " + buffersArray[i]);
+  } else if (result == 0) {
+    console.log(b1 +" is same as " + buffersArray[i]);
+  } else {
+    console.log(b1 +" comes after " + buffersArray[i]);
+  }
+}
+
+// copying a buffer
+var bufferToCopy = new Buffer('ABC');
+var newBuffer = new Buffer(bufferToCopy.length);
+bufferToCopy.copy(newBuffer);
+console.log("newBuffer's content: " + newBuffer.toString());
+
+// slicing a buffer
+var bufferToSlice = new Buffer('abcdefghi');
+var slice1 = bufferToSlice.slice(0, 4);
+var slice2 = bufferToSlice.slice(4, bufferToSlice.length);
+console.log("buffer to slice : " + bufferToSlice.toString());
+console.log("slice 1 :" + slice1.toString());
+console.log("slice 2 :" + slice2.toString());
