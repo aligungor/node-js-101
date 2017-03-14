@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use('/', express.static(__dirname + '/public'));
-app.get('/index.htm', function (req, res) {
+app.get('/express_get.htm', function (req, res) {
    res.sendFile( __dirname + "/" + "express_get.htm" );
 });
 
